@@ -1,0 +1,146 @@
+'''
+Nama : ZOHRIAH
+NIM  : 194855112
+PRODI: TI 5A 
+
+UAS PMROGRAMAN
+'''
+
+def login():
+    print("SISTEM LOGIN UNTUK ADMIN")
+    print(" =" * 40)
+    
+    username = input("masukkan username anda :")
+    password = input("masukkan kode anda :")
+    
+    if  username == "zohriah" and password == "12345":
+        print("login berhasil.....\n\n")
+        main_menu()
+    else:
+        print('login gagal coba lagi...')
+        login() 
+        
+def data_siswa():
+    
+    banyak = int(input("berapa banyak data?"))
+    nama = []
+    kelas = []
+    umur = []
+    jenis_kelamin = []
+    
+    for i in range(0,banyak):
+        print("data ke",i)
+        input_nama = input("nama :")
+        input_kelas = int(input("kelas :"))
+        input_umur = int(input("umur :"))
+        input_jenis_kelamin = input("jenis kelamin :")
+        
+        nama.append(input_nama)
+        kelas.append(input_kelas)
+        umur.append(input_umur)
+        jenis_kelamin.append(input_jenis_kelamin)
+        
+        
+        for i in range(0,len(nama)):
+            data_nama = nama[i]
+            data_kelas = kelas[i]
+            data_umur = umur [i]
+            data_jenis_kelamin = jenis_kelamin[i]
+            print("="*40)
+            print("nama",data_nama,"kelas",data_kelas,"umur",data_umur,"jenis_kelamin",data_jenis_kelamin)
+
+        
+def konfir_pembayaran():
+        konfir_pembayaran = input(' anda ingin mulai menghitung(y/n)')
+        if konfir_pembayaran =='y':
+            pembayaran_SPP()
+        elif konfir_pembayaran == 'n':
+            print('ingin ulang menghitung..?')
+            tanya()
+        else:
+            print('input program salah harap ulangi')
+         
+                    
+def pembayaran_SPP():
+     
+    spp = input("Apakah anda ingin membayar : spp" )
+    angsuran1 = int(input("masukkan bayaran angsuran1  :"))
+    angsuran2 = int(input("masukkan bayaran angsuran2  :"))
+    
+    total = angsuran1 + angsuran2
+   
+    print('jumlah_total:',spp, '=',total)
+    
+    #input pembayaran dari user
+    
+    bayar = int(input('masukkan pembayaran:'))
+    
+    kurang = total - bayar
+    kembalian = bayar - total
+    
+   
+    
+    if bayar > total :
+        print('jumlah kembalian anda dalah',kembalian)
+        tanya()
+        
+    elif bayar == total:
+        print('uang anda pas,terimakasih telah membayar')
+    else:
+        print('maaf uang anda tidak cukup tinggal',kurang)
+        konfir_pembayaran
+        
+def menu_awal():
+    jawab = "ya"
+    hitung = 0
+    
+    while(True):
+        hitung += 1
+        jawab = input("ingin kembali ke menu awal? (ya/tidak)")
+       
+        if jawab == "tidak":
+            break
+        
+        elif jawab == "ya" :
+            print("silahkan login ulang",hitung)
+            login()
+        else:
+            print("input program salah ulangi")
+                                    
+def main_menu():
+   
+    print('='* 10, 'MENU UTAMA APLIKASI SISTEM INFORMASI SEKOLAH','=' *10)
+    print('selamat datang para peserta ujian ')
+    print('\U0001f617' * 5,'masukkan input aplikasi',"="*20)
+    print('1. Data_siswa'.center(25))
+    print('2. pembayaran_spp'.center(30))
+    print('3. menu_awal  '.center(25))
+    print('4. exit program'.center(25))
+
+    # input pilihan
+    pilihan = input('pilih menu :')
+    
+    #pilihan menu
+    if pilihan == '1':
+        data_siswa()
+        
+    elif pilihan == '2':
+        konfir_pembayaran()
+    elif pilihan == '3':
+        menu_awal()
+    else:
+
+        print('program exit')
+        exit()
+def tanya():
+    tanya = input('kembali ke menu ?(y/n)')
+    while tanya == 'y':
+        main_menu()
+    if tanya == 't':
+        exit()
+    else:
+        print("input salah")
+        print("masukkan input dengan benar")
+if __name__=='__main__':
+    login()
+    
